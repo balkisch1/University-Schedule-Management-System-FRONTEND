@@ -1,0 +1,15 @@
+footer {
+  background-color: #1a1a1a; /* Couleur de fond sombre */
+  color: #e3d6b4; /* Couleur du texte claire pour le contraste */
+  text-align: center; /* Centrer le texte */
+  padding: 20px; /* Espacement intérieur */
+  position: relative; /* Pour pouvoir ajuster la position si nécessaire */
+  bottom: 0; /* Positionner en bas */
+  width: 100%; /* Prendre toute la largeur */
+  font-size: 14px; /* Taille de la police */
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5); /* Ombre légère au-dessus */
+}
+
+footer p {
+  margin: 0; /* Supprimer les marges par défaut */
+}

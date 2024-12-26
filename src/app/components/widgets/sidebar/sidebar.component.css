@@ -1,0 +1,125 @@
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #333; /* Noir */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.sidebar-inner {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-title {
+  font-size: 1.1rem;
+  color: #ffc107; /* Jaune */
+  padding-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.submenu {
+  margin: 0;
+}
+/* Sidebar Transition */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #343a40;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transition: transform 0.3s ease; /* Animation fluide */
+  transform: translateX(0); /* Position initiale */
+}
+
+.sidebar-hidden {
+  transform: translateX(-100%); /* Déplace hors de l'écran */
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.5rem;
+  color: #ffeb3b; /* Jaune */
+  cursor: pointer;
+  z-index: 10000;
+  transition: transform 0.3s ease;
+}
+
+
+.submenu a {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffc107; /* Jaune clair */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.submenu a:hover,
+.submenu.active a {
+  background-color: #ffc107; /* Jaune */
+  color: #333; /* Noir */
+}
+
+.submenu i {
+  margin-right: 15px;
+  font-size: 1.2rem;
+  color: #ffc107; /* Jaune */
+}
+
+.menu-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: #ffc107; /* Jaune */
+  transition: transform 0.3s ease;
+}
+
+/* Active State */
+.submenu.active .menu-arrow {
+  transform: rotate(90deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar-inner {
+    padding: 10px;
+  }
+
+  .submenu a {
+    padding: 8px 15px;
+  }
+
+  .menu-title {
+    font-size: 1rem;
+  }
+
+  .submenu i {
+    font-size: 1rem;
+  }
+
+  .menu-arrow {
+    font-size: 1rem;
+  }
+}

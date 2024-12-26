@@ -1,0 +1,276 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", sans-serif; /* Changement de police */
+  color: #333;
+  background-color: #f7f9fc; /* Couleur de fond différente */
+}
+
+a {
+  color: #007bff; /* Couleur des liens Bootstrap */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3; /* Couleur au survol */
+  text-decoration: underline; /* Soulignement au survol */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif; /* Changement de police */
+}
+
+/*--------------------------------------------------------------
+# Sections
+--------------------------------------------------------------*/
+
+
+
+
+
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+  padding: 20px 0;
+  background: #343a40; /* Couleur sombre pour les breadcrumbs */
+  color: #fff;
+}
+
+.breadcrumbs h2 {
+  font-size: 24px; /* Taille de police augmentée */
+  font-weight: 500;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.breadcrumbs ol a {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.breadcrumbs ol a:hover {
+  color: #ffc107; /* Couleur au survol des liens */
+}
+
+.breadcrumbs ol li + li {
+  padding-left: 10px;
+}
+
+.breadcrumbs ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #adb5bd; /* Couleur grise */
+  content: "/";
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: #007bff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Forme circulaire */
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 24px;
+  color: #fff;
+}
+
+.back-to-top:hover {
+  background: #0056b3;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: url(/assets/img/hero-bg.jpg) top center no-repeat; /* Image de fond différente */
+  background-size: cover;
+  display: flex; /* Flexbox pour centrer le contenu */
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* Texte blanc */
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 56px; /* Taille de police augmentée */
+  font-weight: 800; /* Poids de police modifié */
+}
+
+.hero h2 {
+  margin: 20px 0 0 0;
+  font-size: 28px;
+}
+
+.hero .btn-get-started {
+  margin-top: 30px;
+  padding: 15px 35px;
+  border-radius: 50px; /* Coins arrondis */
+  transition: 0.3s;
+  color: #fff;
+  background: #007bff;
+  box-shadow: 0px 5px 30px rgba(0, 123, 255, 0.4);
+}
+
+.hero .btn-get-started:hover {
+  background: #0056b3;
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about .content {
+  background-color: #ffffff; /* Fond blanc pour la section */
+  padding: 40px; /* Padding autour du contenu */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.about h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #007bff; /* Couleur pour le titre */
+  text-transform: uppercase;
+}
+
+.about h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #343a40; /* Couleur de texte sombre */
+}
+
+.about p {
+  margin: 15px 0 30px 0;
+  line-height: 1.6; /* Interligne augmenté */
+}
+
+.about .btn-read-more {
+  padding: 15px 35px;
+  border-radius: 50px; /* Coins arrondis */
+  transition: 0.5s;
+  color: #fff;
+  background: #007bff;
+}
+
+/*--------------------------------------------------------------
+# Schedule Table
+--------------------------------------------------------------*/
+.schedule-table table {
+  width: 100%;
+  border-collapse: collapse; /* Suppression des espaces entre les cellules */
+}
+
+.schedule-table table thead {
+  background: #007bff; /* Couleur d'arrière-plan des en-têtes */
+}
+
+.schedule-table table thead th {
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.schedule-table table tbody td {
+  vertical-align: middle;
+  border: 1px solid #dee2e6; /* Couleur de bordure grise */
+  padding: 20px; /* Augmenter le padding */
+  text-align: center;
+}
+
+.schedule-table table tbody td.day {
+  font-size: 18px;
+  font-weight: 600;
+  background: #f8f9fa; /* Fond gris clair pour les cellules */
+  transition: all 0.3s;
+}
+
+.schedule-table table tbody td.day:hover {
+  background: #007bff; /* Fond bleu au survol */
+  color: #fff; /* Texte blanc au survol */
+}
+
+.schedule-table table tbody td.active {
+  background: #0056b3; /* Couleur pour les éléments actifs */
+  color: #fff; /* Texte blanc */
+}
+/* Header styling */
+.header {
+  background-color: #ff0000; /* Fond rouge */
+  padding: 15px 30px; /* Espacement interne */
+  color: #ffffff; /* Couleur du texte */
+}
+/* Header styling */
+.container-fluid.header {
+  background-color: #333 !important; /* Fond rouge avec !important */
+  padding: 15px 30px; /* Espacement interne */
+  color: #ffffff; /* Couleur du texte */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+}
+
+/* Navigation item styling */
+.nav-item {
+  margin: 0 15px; /* Espacement entre les items */
+}
+
+.nav-link {
+  color: #ffffff; /* Couleur du lien */
+  text-decoration: none; /* Enlever le soulignement */
+  font-size: 18px; /* Taille de la police */
+  transition: color 0.3s; /* Transition pour l'effet au survol */
+}
+
+.nav-link:hover {
+  color: #ffcc00; /* Changer la couleur au survol */
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #ffcc00; /* Couleur de fond du bouton */
+  color: #333; /* Couleur du texte du bouton */
+  border: none; /* Supprimer la bordure */
+  padding: 10px 20px; /* Espacement interne du bouton */
+  border-radius: 5px; /* Coins arrondis */
+  font-size: 16px; /* Taille de la police */
+  cursor: pointer; /* Changer le curseur */
+  transition: background-color 0.3s; /* Transition pour l'effet au survol */
+}
+
+.btn-primary:hover {
+  background-color: #e6b800; /* Couleur au survol */
+}

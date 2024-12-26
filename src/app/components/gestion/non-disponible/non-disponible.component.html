@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non Disponibilité des Professeurs</title>
+   <!-- Lien vers le fichier CSS -->
+</head>
+<body>
+  <div class="container">
+    <h1>Gestion des Non Disponibilités</h1>
+    
+    <!-- Formulaire d'ajout de non disponibilité -->
+    <h2>Formulaire d'ajout de non disponibilité</h2>
+    <form [formGroup]="nonDisponibiliteForm" (ngSubmit)="onSubmit()" class="non-dispo-form">
+      <div class="form-group">
+        <label for="jour">Jour de la semaine</label>
+        <select id="jour" formControlName="jour" required>
+          <option value="" disabled selected>Choisissez un jour</option>
+          <option value="Lundi">Lundi</option>
+          <option value="Mardi">Mardi</option>
+          <option value="Mercredi">Mercredi</option>
+          <option value="Jeudi">Jeudi</option>
+          <option value="Vendredi">Vendredi</option>
+          <option value="Samedi">Samedi</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="periode">Période de la journée</label>
+        <select id="periode" formControlName="periode" required>
+          <option value="" disabled selected>Choisissez une période</option>
+          <option value="S1">08:30 - 10:00</option>
+          <option value="S2">10:05 - 11:35</option>
+          <option value="S3">11:40 - 13:10</option>
+          <option value="S4">13:15 - 14:45</option>
+          <option value="S5">14:50 - 16:20</option>
+          <option value="S6">16:25 - 17:55</option>
+        </select>
+      </div>
+
+    
+
+      <button type="submit" (click)="onSubmit()" class="submit-btn">Ajouter la Non-Disponibilité</button>
+    </form>
+
+    <!-- Liste des non disponibilités -->
+    <h2>Liste des Non Disponibilités</h2>
+    <table class="non-dispo-list">
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Période</th>
+      
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nonDispo of nonDisponibilites">
+          <td>{{ nonDispo.jour }}</td>
+          <td>{{ nonDispo.periode }}</td>
+        
+          <td>
+            <button (click)="deleteNonDisponibilite(nonDispo.id)" class="delete-btn">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

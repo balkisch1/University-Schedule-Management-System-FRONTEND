@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>{{ title }}</title>  <!-- Make sure `title` is defined in your component -->
+  </head>
+
+  <body>
+    <!-- Conditional rendering based on authentication -->
+    <ng-container *ngIf="isAuthenticated; else indexPage">
+      <div class="main-wrapper">
+        <!-- Navbar and Sidebar visible when authenticated -->
+        <app-navbar></app-navbar>
+        <app-sidebar></app-sidebar>
+
+        <div class="page-wrapper">
+          <!-- The page content that will be rendered based on the route -->
+          <div class="content container-fluid mb-4">
+            <router-outlet></router-outlet> <!-- Routed components will appear here -->
+          </div>
+          <!-- Footer -->
+          <app-footer></app-footer>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- The content that will show when the user is not authenticated -->
+    <ng-template #indexPage>
+      <app-index-page></app-index-page>
+    </ng-template>
+    
+  </body>
+</html>

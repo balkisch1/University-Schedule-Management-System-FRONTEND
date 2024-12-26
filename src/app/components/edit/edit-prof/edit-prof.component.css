@@ -1,0 +1,85 @@
+/* Style général pour la ligne */
+.row {
+  margin: 0; /* Éliminer les marges par défaut */
+}
+
+/* Style pour la carte */
+.card {
+  background-color: #ffffff; /* Fond blanc */
+  border-radius: 10px; /* Bords arrondis */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+/* Style pour le corps de la carte */
+.card-body {
+  padding: 30px; /* Espacement interne */
+}
+
+/* Style pour le titre du formulaire */
+.form-title {
+  font-size: 24px; /* Taille de la police */
+  font-weight: bold; /* Gras */
+  margin-bottom: 20px; /* Espacement en bas */
+  color: #1a1a1a; /* Couleur du texte */
+}
+
+/* Style pour les groupes de formulaires */
+.form-group {
+  margin-bottom: 20px; /* Espacement entre les groupes */
+}
+
+/* Style pour les étiquettes des champs */
+label {
+  font-size: 16px; /* Taille de la police des étiquettes */
+  color: #333; /* Couleur du texte */
+}
+
+/* Style pour les champs de saisie */
+.form-control {
+  border: 1px solid #ccc; /* Bordure gris clair */
+  border-radius: 5px; /* Bords arrondis */
+  padding: 10px; /* Espacement interne */
+  font-size: 14px; /* Taille de la police */
+  transition: border-color 0.3s; /* Transition pour les changements de couleur */
+}
+
+/* Changer la couleur de la bordure au focus */
+.form-control:focus {
+  border-color: #b99a45; /* Bordure dorée au focus */
+  outline: none; /* Enlever le contour par défaut */
+}
+
+/* Style pour les messages d'erreur */
+.login-danger {
+  color: #e74c3c; /* Couleur rouge pour les erreurs */
+}
+
+/* Style pour le bouton de soumission */
+.btn-primary {
+  background-color: #b99a45; /* Couleur dorée */
+  color: #ffffff; /* Couleur du texte du bouton */
+  border: none; /* Pas de bordure */
+  padding: 10px 20px; /* Espacement interne */
+  border-radius: 5px; /* Bords arrondis */
+  cursor: pointer; /* Curseur pointer pour indiquer cliquable */
+  font-size: 16px; /* Taille de la police */
+  transition: background-color 0.3s; /* Transition pour changement de couleur */
+}
+
+/* Changer la couleur au survol du bouton */
+.btn-primary:hover {
+  background-color: #d5c28f; /* Couleur légèrement plus claire au survol */
+}
+
+/* Style pour l'alignement des éléments */
+.d-flex {
+  display: flex; /* Flexbox pour l'alignement */
+}
+
+.align-items-center {
+  align-items: center; /* Alignement vertical */
+}
+
+.justify-content-center {
+  justify-content: center; /* Alignement horizontal */
+}

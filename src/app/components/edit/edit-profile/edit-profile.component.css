@@ -1,0 +1,92 @@
+/* General Layout and Spacing */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.local-forms label {
+  font-weight: 500;
+  color: #333;
+}
+
+.local-forms .form-control {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.local-forms .form-control:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
+}
+
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.select:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
+}
+
+.login-danger {
+  color: #d9534f;
+}
+
+.student-submit {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.student-submit button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.student-submit button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .col-sm-4 {
+    margin-bottom: 1rem;
+  }
+
+  .col-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .form-title {
+    font-size: 1.25rem;
+  }
+}

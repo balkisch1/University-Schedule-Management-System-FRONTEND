@@ -1,0 +1,58 @@
+<div class="main-wrapper login-body">
+  <div class="login-wrapper">
+    <div class="container">
+      <div class="loginbox">
+        <div class="login-right">
+          <img class="img-fluid" src="/assets/img/isetso.jpg" alt="Logo" />
+        </div>
+        
+        <div class="login-right">
+          <div class="login-right-wrap">
+            <h1>Bienvenue à Timely</h1>
+            <p class="account-subtitle">
+              Accédez à votre compte pour consulter les emplois du temps.
+            </p>
+            <h2>Connexion</h2>
+
+            <form [formGroup]="formGroup" (ngSubmit)="login()">
+              <div class="form-group">
+                <label>Nom d'utilisateur <span class="login-danger">*</span></label>
+                <input type="text" class="form-control" formControlName="username"   placeholder="username" />
+                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+              </div>
+              <div class="form-group">
+                <label>Mot de passe <span class="login-danger">*</span></label>
+                <div class="password-container">
+                  <input 
+                    [type]="passwordVisible ? 'text' : 'password'" 
+                    class="form-control pass-input" 
+                    formControlName="password" 
+                    placeholder="Mot de passe" 
+                  />
+                  <span 
+                    class="profile-views feather-eye toggle-password" 
+                    (click)="togglePasswordVisibility()">
+                    <i [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="formGroup.invalid">
+                  Connexion
+                </button>
+              </div>
+              
+              
+            </form>
+            <div class="form-group">
+              <button class="btn btn-google btn-block" (click)="loginWithGoogle()">
+                <i class="fab fa-google"></i> Se connecter avec Google
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,180 @@
+<div *ngIf="admin">
+  <app-page-header
+    [link]="'emploitemps'"
+    [prev]="'Emploi du temps'"
+    [current]="'Home'"
+  ></app-page-header>
+</div>
+<meta charset="utf-8" />
+<div class="card report-card">
+  <div class="card-body pb-0">
+    <div class="form-row row align-items-center">
+      <div *ngIf="!prof" class="col">
+        <div class="form-group">
+          <label for="department-select">
+            <i class="fa fa-building"></i> Départements
+          </label>
+          <select
+            id="department-select"
+            title="Select a department"
+            (change)="handleDepartmentChange($event.target)"
+            class="form-select custom-select"
+          >
+            <option selected disabled>Sélectionner...</option>
+            <option
+              *ngFor="let department of departements"
+              value="{{ department.id }}"
+            >
+              {{ department.libelle }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="!prof" class="col">
+        <div class="form-group">
+          <label for="field-select">
+            <i class="fa fa-clipboard"></i> Filiéres
+          </label>
+          <select
+            id="field-select"
+            title="Select a field"
+            (change)="handleFiliereChange($event.target)"
+            class="form-select custom-select"
+          >
+            <option selected disabled>Sélectionner...</option>
+            <option *ngFor="let filiere of filieres" value="{{ filiere.id }}">
+              {{ filiere.libelle }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="!prof" class="col">
+        <div class="form-group">
+          <label for="semester-select">
+            <i class="fa fa-calendar"></i> Semestre
+          </label>
+          <select
+            id="semester-select"
+            title="Select a semester"
+            (change)="handleSemsterChange($event.target)"
+            class="form-select custom-select"
+          >
+            <option selected disabled>Sélectionner...</option>
+            <option *ngFor="let s of semsters" value="{{ s.id }}">
+              {{ s.num }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-auto text-end float-end ms-auto download-grp pb-2">
+        <a
+          [ngClass]="{ disabled: !ready }"
+          (click)="handleDownloadEmploi()"
+          *ngIf="!spinnerExport"
+          class="btn btn-outline-primary me-2"
+          ><i class="fas fa-download"></i> Télécharger
+        </a>
+        <div
+          *ngIf="spinnerExport"
+          class="spinner-border text-primary"
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="schedule-table">
+            <table *ngIf="ready" class="table bg-white">
+              <thead>
+                <tr>
+                  <th>Jours</th>
+                  <th>8h30-10h30</th>
+                  <th>10h30-12h30</th>
+                  <th>14h-16h</th>
+                  <th class="last">16h-18h</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  style="text-align: center; width: 100px; height: 150px"
+                  *ngFor="
+                    let day of [
+                      'Lundi',
+                      'Mardi',
+                      'Mercredi',
+                      'Jeudi',
+                      'Vendredi',
+                      'Samedi'
+                    ]
+                  "
+                >
+                  <td class="day">{{ day }}</td>
+                  <ng-container *ngIf="ready">
+                    <ng-container *ngIf="day !== 'Samedi'">
+                      <ng-container *ngIf="hasModule(day, '8h30-10h30')">
+                        <td class="active" style="width: 200px">
+                          <h4>{{ getModuleTitle(day, "8h30-10h30") }}</h4>
+                          <p>{{ getModuleRoom(day, "8h30-10h30") }}</p>
+                          <span>{{ getModuleTeacher(day, "8h30-10h30") }}</span>
+                        </td>
+                      </ng-container>
+                      <ng-container *ngIf="!hasModule(day, '8h30-10h30')">
+                        <td></td>
+                      </ng-container>
+                      <ng-container *ngIf="hasModule(day, '10h30-12h30')">
+                        <td class="active" style="width: 200px">
+                          <h4>{{ getModuleTitle(day, "10h30-12h30") }}</h4>
+                          <p>{{ getModuleRoom(day, "10h30-12h30") }}</p>
+                          <span>{{
+                            getModuleTeacher(day, "10h30-12h30")
+                          }}</span>
+                        </td>
+                      </ng-container>
+                      <ng-container *ngIf="!hasModule(day, '10h30-12h30')">
+                        <td></td>
+                      </ng-container>
+                      <ng-container *ngIf="hasModule(day, '14h-16h')">
+                        <td class="active" style="width: 200px">
+                          <h4>{{ getModuleTitle(day, "14h-16h") }}</h4>
+                          <p>{{ getModuleRoom(day, "14h-16h") }}</p>
+                          <span>{{ getModuleTeacher(day, "14h-16h") }}</span>
+                        </td>
+                      </ng-container>
+                      <ng-container *ngIf="!hasModule(day, '14h-16h')">
+                        <td></td>
+                      </ng-container>
+                      <ng-container *ngIf="hasModule(day, '16h-18h')">
+                        <td class="active" style="width: 200px">
+                          <h4>{{ getModuleTitle(day, "16h-18h") }}</h4>
+                          <p>{{ getModuleRoom(day, "16h-18h") }}</p>
+                          <span>{{ getModuleTeacher(day, "16h-18h") }}</span>
+                        </td>
+                      </ng-container>
+                      <ng-container *ngIf="!hasModule(day, '16h-18h')">
+                        <td></td>
+                      </ng-container>
+                    </ng-container>
+                    <td class="active" colspan="4" *ngIf="day === 'Samedi'">
+                      <h4>Controle et Rattrapage</h4>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              *ngIf="!ready"
+              class="text-center text-primary m-5"
+              role="status"
+            >
+              <span> Merci de choisir une filière et une année </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

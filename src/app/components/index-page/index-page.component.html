@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système de gestion des enseignements et des horaires</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Pour les icônes -->
+    <style>
+        .header {
+            background-color: #1c1c1c; /* Fond sombre */
+            padding: 15px 30px; /* Espacement vertical et horizontal */
+            box-shadow: none; /* Supprimer l'ombre portée pour un look plus net */
+            border-bottom: none; /* Enlève la ligne blanche */
+        }
+        .nav-menu {
+            background-color: #1c1c1c;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #C7AE6A;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            transition: color 0.3s, background-color 0.3s;
+            border-radius: 5px;
+            display: inline-block; /* S'assure que le lien prend la largeur minimale */
+            margin-right: 15px; /* Espace entre les liens */
+        }
+
+        .nav-link:hover {
+            background-color: rgba(199, 174, 106, 0.2);
+            color: #f1c40f;
+        }
+
+
+        .btn-primary {
+            background-color: #b99a45; /* Jaune */
+            color: #121212; /* Texte sombre */
+            border: none; /* Pas de bordure */
+            padding: 10px 20px; /* Espacement interne */
+            border-radius: 5px; /* Coins arrondis */
+            transition: background-color 0.3s, color 0.3s; /* Transition pour effet au survol */
+        }
+
+        .btn-primary:hover {
+            background-color: #d1b90f; /* Jaune plus clair au survol */
+            color: #121212; /* Texte sombre */
+            cursor: pointer; /* Changement du curseur au survol */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Aligne les éléments en colonne sur petits écrans */
+                align-items: flex-start; /* Aligne à gauche */
+            }
+
+            .nav {
+                margin-top: 10px; /* Marge entre le logo et le menu */
+            }
+        }
+
+        .image-container {
+            position: relative; /* Positionnement relatif pour le conteneur */
+            overflow: hidden; /* Cacher le débordement de l'image */
+            border-radius: 15px; /* Coins arrondis */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombre portée pour donner de la profondeur */
+            transition: transform 0.3s ease; /* Transition pour effet de zoom */
+        }
+
+        .image-container:hover {
+            transform: scale(1.05); /* Zoom léger au survol */
+        }
+
+        .hero-img {
+            max-width: 100%; /* Assurez-vous que l'image ne dépasse pas le conteneur */
+            height: auto; /* Garder la proportion de l'image */
+        }
+
+        body {
+            background-color: #333; /* Fond sombre */
+            color: #f1c40f; /* Jaune */
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e1e1e, #4a4a4a); /* Dégradé pour le hero */
+            color: #ffffff; /* Texte blanc */
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .btn-get-started {
+            background-color: #f1c40f; /* Jaune */
+            color: #121212; /* Fond sombre pour le texte */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-get-started:hover {
+            background-color: #ffeb3b; /* Jaune plus clair au survol */
+            color: #121212; /* Fond sombre pour le texte */
+        }
+
+        .about {
+            background-color: #fa6363; /* Autre nuance de gris foncé */
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+
+        .about .card-header {
+            background-color: #333; /* Fond pour l'en-tête de la section About */
+        }
+
+        /* Styles personnalisés supplémentaires */
+        h1, h2 {
+            margin: 0;
+            padding: 0 0 20px 0;
+        }
+
+        /* Styles pour le footer */
+        .footer {
+            background-color: #1c1c1c; /* Fond sombre pour le footer */
+            padding: 20px 0;
+            color: white;
+        }
+
+        .btn-get-started {
+            display: inline-flex; /* Utilise flexbox pour l'alignement de l'icône et du texte */
+            align-items: center; /* Centre verticalement le texte et l'icône */
+            background-color: #b99a45; /* Couleur de fond personnalisée (jaune) */
+            color: #121212; /* Couleur du texte sombre */
+            padding: 12px 25px; /* Espacement interne pour un bouton plus grand */
+            border-radius: 5px; /* Coins arrondis */
+            text-decoration: none; /* Pas de soulignement */
+            font-size: 16px; /* Taille de la police */
+            font-weight: bold; /* Met le texte en gras */
+            transition: background-color 0.3s, transform 0.3s; /* Transition pour le survol */
+            margin: 10px 0; /* Marge autour du bouton */
+        }
+
+        .btn-get-started:hover {
+            background-color: #d1b90f; /* Couleur plus claire au survol */
+            transform: translateY(-3px); /* Légère élévation au survol */
+            cursor: pointer; /* Change le curseur au survol */
+        }
+
+        .btn-get-started i {
+            margin-left: 8px; /* Espace entre le texte et l'icône */
+        }
+        .footer {
+    background-color: #1c1c1c; /* Couleur de fond sombre */
+    color: white;
+}
+
+.footer h5 {
+    color: #f1c40f; /* Jaune */
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+.footer-link {
+    color: #C7AE6A;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-link:hover {
+    color: #f1c40f; /* Change de couleur au survol */
+}
+
+.social-icon {
+    color: #C7AE6A;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #f1c40f; /* Jaune au survol */
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 13px;
+    color: #777;
+}
+.hero-image {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0; /* Cachez le bouton par défaut */
+  transition: opacity 0.3s ease; /* Transition pour l'apparition du bouton */
+}
+
+.play-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.image-with-button {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.image-with-button:hover .play-button {
+  opacity: 1; /* Affiche le bouton au survol */
+}
+
+.hero-video {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+
+    </style>
+</head>
+<body>
+  <header class="header container-fluid d-flex justify-content-between align-items-center">
+    <nav class="nav user-menu d-flex align-items-center w-100 justify-content-between">
+    <!-- Lien vers la page About -->
+
+
+
+
+
+      
+        <div class="d-flex">
+            <div class="nav-item">
+                <button (click)="handleConnected()" class="btn btn-primary">
+                    Se connecter
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+    <ng-container *ngIf="login; else page">
+        <app-login></app-login>
+    </ng-container>
+
+    <ng-template #page>
+        <!-- ======= Hero Section ======= -->
+        <section id="hero" class="hero">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up">Gestion intelligente des emplois du temps</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">Simplifiez et automatisez vos horaires éducatifs.</h2>
+                <div>
+                  <a (click)="handleConnected()" class="btn-get-started scrollto" style="background-color: #b99a45; border: none; box-shadow: none; outline: none;">
+                    <span>Consulter les emplois du temps</span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                <div class="image-container">
+                  <!-- Afficher l'image initiale avec un bouton Play -->
+                  <div *ngIf="!videoStarted" class="image-with-button">
+                    <img src="/assets/img/rm.png" alt="Hero Image" class="hero-image" />
+                    <button class="play-button" (click)="startVideo()">Lire la vidéo</button>
+                  </div>
+                  
+                  <!-- Afficher la vidéo après le clic sur le bouton -->
+                  <video *ngIf="videoStarted" id="heroVideo" class="hero-video" autoplay loop muted playsinline style="width: 100%; border-radius: 15px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);">
+                    <source src="/assets/img/isetso.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        
+        <!-- End Hero -->
+        
+        <!-- ======= About Section ======= -->
+      
+
+        <!-- ======= Footer Section ======= -->
+        <!-- Footer Section -->
+<footer class="footer text-center py-4">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-4 mb-3">
+              <h5>À propos</h5>
+              <p>
+                  Système de gestion des enseignements et des horaires : simplifiez et organisez efficacement votre emploi du temps éducatif.
+              </p>
+          </div>
+
+          <div class="col-lg-4 mb-3">
+              <h5>Liens Utiles</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#about" class="footer-link">À propos</a></li>
+              
+                  <li><a href="#contact" class="footer-link">Contact</a></li>
+              </ul>
+          </div>
+
+          <div class="col-lg-4 mb-3">
+              <h5>Suivez-nous</h5>
+              <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+      </div>
+
+      <div class="footer-bottom mt-3">
+          <p>&copy; 2024 Système de gestion des enseignements et des horaires. Tous droits réservés.</p>
+      </div>
+  </div>
+</footer>
+
+    </ng-template>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-Ol0Dwwz+f7+YMdG5s5d+G3U/3s7Yl3aUO4iT5Ycr2e6g7JGHNihJxiYPo7Pz6n5" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb6E7F6vl2F7PqTZ9fqKUs1Fq+GY0g13TMeG5NqFTI9khX6/9" crossorigin="anonymous"></script>
+</body>
+</html>

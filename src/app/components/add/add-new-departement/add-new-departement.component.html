@@ -1,0 +1,60 @@
+<app-page-header
+  [link]="'departements'"
+  [prev]="'Départements'"
+  [current]="'Ajouter un Département'"
+></app-page-header>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card comman-shadow">
+      <div class="card-body">
+        <form
+          [formGroup]="newDepartementFormGroup"
+          (ngSubmit)="handleAddDepartement()"
+        >
+          <div class="row">
+            <div class="col-12">
+              <h5 class="form-title student-info">
+                Informations sur le Département<span
+                  ><a href="javascript:;"
+                    ><i class="feather-more-vertical"></i></a
+                ></span>
+              </h5>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Libellé <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="libelle"
+                  placeholder="Libellé ...."
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label
+                  >Chef du Département<span class="login-danger">*</span></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="chefDepartement"
+                  placeholder="Chef du Département...."
+                />
+              </div>
+            </div>
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="student-submit">
+                <button type="submit" class="btn btn-primary">Confirmer</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

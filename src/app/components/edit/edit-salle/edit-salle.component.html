@@ -1,0 +1,66 @@
+<app-page-header
+  [link]="'salles'"
+  [prev]="'Salles'"
+  [current]="'Ajouter une salle'"
+></app-page-header>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card comman-shadow">
+      <div class="card-body">
+        <form [formGroup]="editSalleFormGroup" (ngSubmit)="handleUpdateSalle()">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="form-title student-info">
+                Informations sur la Salle
+                <span>
+                  <a href="javascript:;">
+                    <i class="feather-more-vertical"></i>
+                  </a>
+                </span>
+              </h5>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Numéro <span class="login-danger">*</span></label>
+                <!-- Changement ici : type="text" pour accepter des chaînes de caractères -->
+                <input
+                  class="form-control"
+                  formControlName="numSalle"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Capacité <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  formControlName="capacite"
+                  type="number"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Type <span class="login-danger">*</span></label>
+                <select class="form-control select" formControlName="typeSalle">
+                  <option value="miniAmphi">MiniAmphi</option>
+                  <option value="small">Small</option>
+                  <option value="big">Big</option>
+                  <option value="Tps">Tps</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 d-flex align-items-center justify-content-center">
+              <div class="student-submit">
+                <button type="submit" class="btn btn-primary">Confirmer</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

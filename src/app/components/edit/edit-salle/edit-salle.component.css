@@ -1,0 +1,129 @@
+/* Global styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page header */
+app-page-header {
+  background-color: #4e73df;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+app-page-header h1 {
+  font-size: 24px;
+}
+
+app-page-header .breadcrumb {
+  font-size: 14px;
+}
+
+/* Card and form styles */
+.comman-shadow {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.form-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.student-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.student-info a:hover {
+  color: #0056b3;
+}
+
+/* Form group styles */
+.local-forms {
+  margin-bottom: 15px;
+}
+
+.local-forms label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.local-forms .form-control {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.local-forms .form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
+}
+
+.select {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #555;
+}
+
+.select:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
+}
+
+/* Required fields */
+.login-danger {
+  color: red;
+}
+
+/* Button styles */
+.student-submit .btn {
+  background-color: #4e73df;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.student-submit .btn:hover {
+  background-color: #2e59d9;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 18px;
+  }
+
+  .local-forms label {
+    font-size: 12px;
+  }
+
+  .student-submit .btn {
+    width: 100%;
+  }
+}

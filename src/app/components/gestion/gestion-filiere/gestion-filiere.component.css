@@ -1,0 +1,174 @@
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.page-header .download-grp .btn {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.page-header .download-grp .btn i {
+  margin-right: 8px;
+}
+
+/* Form Section */
+.student-group-form {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-student-btn .btn {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Table Styles */
+.card-table {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table .form-check-input {
+  margin: 0;
+}
+
+.actions .btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+.actions .btn i {
+  margin-right: 5px;
+}
+
+.actions .btn.bg-success-light {
+  background-color: #28a745;
+  color: white;
+}
+
+.actions .btn.bg-danger-light {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+  list-style: none;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-item .page-link {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.page-item .page-link:hover {
+  background-color: #0056b3;
+}
+
+.page-item.disabled .page-link {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-item.selected .page-link {
+  background-color: #0056b3;
+}
+
+/* Dropdown Styles */
+.form-select {
+  width: 100px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .student-group-form .row {
+    flex-direction: column;
+  }
+
+  .student-group-form .col-lg-3, .student-group-form .col-lg-2 {
+    width: 100%;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-header .download-grp .btn {
+    margin-top: 10px;
+  }
+}

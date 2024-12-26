@@ -1,0 +1,123 @@
+/* Styles pour app-page-header */
+app-page-header {
+  display: block;
+  background-color: #f8f9fa; /* Couleur d'arrière-plan claire */
+  padding: 20px;
+  border-bottom: 2px solid #007bff; /* Ligne bleue pour démarcation */
+  margin-bottom: 20px;
+}
+
+app-page-header a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+app-page-header a:hover {
+  text-decoration: underline;
+}
+
+/* Styles pour le formulaire */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-body {
+  padding: 20px;
+}
+
+h5.form-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input,
+.form-group select {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.login-danger {
+  color: red;
+  font-weight: bold;
+}
+
+.student-submit {
+  margin-top: 20px;
+}
+
+.student-submit .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.student-submit .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Styles pour le téléchargement de fichier */
+.students-up-files label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.uplod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-upload {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.file-upload:hover {
+  background-color: #0056b3;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .student-submit .btn-primary {
+    padding: 8px 16px;
+  }
+}

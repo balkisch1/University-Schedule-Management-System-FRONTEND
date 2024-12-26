@@ -1,0 +1,67 @@
+/* Page Header Styling */
+.page-header {
+  background-color: #ffeb3b; /* Jaune */
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.page-header .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-sub-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  color: #000; /* Noir */
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.breadcrumb-item {
+  display: inline-block;
+  color: #000; /* Noir */
+}
+
+.breadcrumb-item a {
+  color: #000; /* Noir */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+  color: #ffc107; /* Jaune foncé */
+}
+
+.breadcrumb-item.active {
+  color: #6c757d; /* Gris */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 15px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.9rem;
+  }
+}
