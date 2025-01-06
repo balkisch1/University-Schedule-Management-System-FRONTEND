@@ -22,4 +22,7 @@ export class EmploiDeTempsService {
    getEmploisByClasse(classeId: number) {
     return this.http.get<ElementDeModule[]>(environment.backendHost + "/emploisDeTemps/" + classeId);
   }
+  getPDFEnseignantSchedule(id: number): Observable<Blob> {
+    return this.http.get(`${environment.backendHost}/enseignant/${id}/emploi-du-temps/pdf`, { responseType: 'blob' });
+  }
 }

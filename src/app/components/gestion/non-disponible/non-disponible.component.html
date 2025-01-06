@@ -4,7 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Non Disponibilité des Professeurs</title>
-   <!-- Lien vers le fichier CSS -->
+  <!-- Lien vers le fichier CSS -->
+  <style>
+    /* Modal */
+    .modal {
+      display: none; /* Cache par défaut */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border: 1px solid red;
+      width: 300px;
+      text-align: center;
+    }
+
+    .modal-buttons {
+      margin-top: 20px;
+    }
+
+    .modal-buttons button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      background-color: gray;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -39,9 +88,7 @@
         </select>
       </div>
 
-    
-
-      <button type="submit" (click)="onSubmit()" class="submit-btn">Ajouter la Non-Disponibilité</button>
+      <button type="button"  (click)="onSubmit()" class="submit-btn">Ajouter la Non-Disponibilité</button>
     </form>
 
     <!-- Liste des non disponibilités -->
@@ -51,7 +98,6 @@
         <tr>
           <th>Jour</th>
           <th>Période</th>
-      
           <th>Action</th>
         </tr>
       </thead>
@@ -59,13 +105,49 @@
         <tr *ngFor="let nonDispo of nonDisponibilites">
           <td>{{ nonDispo.jour }}</td>
           <td>{{ nonDispo.periode }}</td>
-        
           <td>
-            <button (click)="deleteNonDisponibilite(nonDispo.id)" class="delete-btn">Supprimer</button>
+            <button (click)="openModal(nonDispo.id)" class="delete-btn">Supprimer</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <!-- Modal de confirmation -->
+  <div class="modal" id="confirmDeleteModal">
+    <div class="modal-content">
+      <h3>Êtes-vous sûr de vouloir supprimer cette non-disponibilité ?</h3>
+      <div class="modal-buttons">
+        <button (click)="confirmDelete()" class="delete-btn">Oui</button>
+        <button (click)="cancelDelete()" class="cancel-btn">Non</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Voici un exemple de contrôle pour afficher et masquer le modal via JS
+    function openModal(id) {
+      // Afficher le modal
+      document.getElementById('confirmDeleteModal').style.display = 'flex';
+      // Stocker l'ID de l'élément à supprimer
+      currentDeleteId = id;
+    }
+
+    function closeModal() {
+      // Masquer le modal
+      document.getElementById('confirmDeleteModal').style.display = 'none';
+    }
+
+    function confirmDelete() {
+      // Appeler la méthode de suppression en utilisant l'ID de l'élément à supprimer
+      deleteNonDisponibilite(currentDeleteId);
+      closeModal();
+    }
+
+    function cancelDelete() {
+      // Fermer le modal sans faire de suppression
+      closeModal();
+    }
+  </script>
 </body>
 </html>

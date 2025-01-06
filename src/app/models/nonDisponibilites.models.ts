@@ -1,4 +1,5 @@
 export interface NonDisponibilite {
+  id: number;
   jour: string;
   periode: string;
   cin: string;

@@ -41,15 +41,16 @@ getCurrentUserId(): number {
   const user = this.getUser();
   if (!user) {
     console.warn('Aucun utilisateur connecté.');
-    // Vous pouvez ici rediriger vers la page de connexion ou afficher un message d'erreur
+    return 0; // Retourne 0 si aucun utilisateur n'est trouvé
   }
-  return user?.id || 0;  // Retourne 0 si aucun utilisateur n'est trouvé
+  return user.id; // Retourne l'ID de l'utilisateur connecté
 }
 
-getUser() {
-  const user = localStorage.getItem('user');  // Supposons que l'utilisateur est stocké sous la clé 'user'
-  return user ? JSON.parse(user) : null;  // Parse le JSON si l'utilisateur existe
-}
+  getUser() {
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    return user;
+  }
+  
 
 
 

@@ -17,8 +17,8 @@ export class NonDisponibiliteService {
   public addNonDisponibilite(nonDisponibilite: NonDisponibilite): Observable<NonDisponibilite> {
     return this.http.post<NonDisponibilite>(this.apiUrl, nonDisponibilite);
   }
-  getNonDisponibilitesByEnseignant(enseignantId: number): Observable<NonDisponibilite[]> {
-    return this.http.get<NonDisponibilite[]>(`${this.apiUrl}/${enseignantId}`);
+  getNonDisponibilitesByProf(enseignantId: number): Observable<NonDisponibilite[]> {
+    return this.http.get<NonDisponibilite[]>(`${this.apiUrl}/professeur/${enseignantId}`);
   }
   
   getNonDisponibilites(): Observable<any[]> {
@@ -26,7 +26,7 @@ export class NonDisponibiliteService {
   }
   getNonDisponibiliteById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`);
-  }
+  } 
 
   deleteNonDisponibilite(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);

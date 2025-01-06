@@ -1,314 +1,126 @@
-
-import { ElementDeModule } from './../../models/elementModule.models';
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { Classe } from 'src/app/models/classes.models';
-import { Departement } from 'src/app/models/departement.models';
-import { Filiere } from 'src/app/models/filieres.models';
-import { Semestre } from 'src/app/models/semestre.models';
-import { ActionsService } from 'src/app/services/actions.service';
-import { ClasseService } from 'src/app/services/classe.service';
-import { DepartmentService } from 'src/app/services/department.service';
-import { EmploiDeTempsService } from 'src/app/services/emploi-de-temps.service';
-import { FiliereService } from 'src/app/services/filiere.service';
-import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/services/auth.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-timetable',
   templateUrl: './timetable.component.html',
   styleUrls: ['./timetable.component.css']
 })
-export class  TimetableComponent implements OnInit {
+export class TimetableComponent implements OnInit {
+  emploi: any[] = [];
+  enseignantId: any;
+  jours: string[] = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'];
+  periodes: string[] = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6'];
+  loading: boolean = true;
 
-  prof!: boolean;
-  public departements:Departement[] = [];
-  public filieres:Filiere[] = [];
-  public semsters:Semestre[] = [];
-  public elementDeModule:ElementDeModule[] = [];
-  selectedDepartement: Departement|undefined;
-  selectedFiliere: Filiere|undefined;
-   selectedSemster: Semestre|undefined;
-   classe!:Classe ;
-  spinnerExport:boolean=false;
-  ready = false;
-  admin:boolean = false;
-  constructor(private actons:ActionsService,private cookieService: CookieService,private departmentService: DepartmentService,private filiereService: FiliereService,private emploiService:EmploiDeTempsService,private classeService:ClasseService) {
+  // Dictionnaire pour traduire les jours en français
+  daysTranslation: { [key: string]: string } = {
+    MONDAY: 'Lundi',
+    TUESDAY: 'Mardi',
+    WEDNESDAY: 'Mercredi',
+    THURSDAY: 'Jeudi',
+    FRIDAY: 'Vendredi'
+  };
 
-  }
-  ngOnInit() {
-    this.prof = (this.cookieService.get('role') == 'Ensignant')? true : false; 
-    if(this.prof){
-       this.ready = true;
-      this.emploiService.getEmploiByProf(parseFloat(this.cookieService.get("userId"))).subscribe(
-        data=>{
-          console.log(data);
-          
-          this.elementDeModule = data;
-          console.log(data);
-        }
-      )
+  constructor(private http: HttpClient,
+      private authService: AuthService,
+  ) {}
 
+  ngOnInit(): void {
+    const userId = this.authService.getCurrentUserId();
+    if (userId === 0) {
+      console.warn('Utilisateur non connecté ou ID non valide.');
+      return;
     }
-    else{this.getDepartements();
-    this.admin = this.cookieService.check('role');
-
-
+  
+    // Si l'utilisateur est bien connecté, on récupère son emploi du temps
+    this.http.get<any[]>(`${environment.backendHost}/emploisDeTemps/prof/${userId}`)
+      .subscribe(data => {
+        console.log('Données récupérées: ', data);
+        this.emploi = data;
+        this.loading = false;
+      }, error => {
+        console.error('Erreur lors de la récupération des données', error);
+        this.loading = false;
+      });
   }
-    
-  }
-
-hasModule(days: string, timeSlot: string): boolean {
-
-  let prd= this.getPeriode(timeSlot );
-let day = this.changeDay(days).toUpperCase();
-
-  return this.elementDeModule.some(module => module.jour === day && module.periode === prd);
-}
-getPeriode(timeSlot: string): string {
-  let prd = "";
-  switch (timeSlot) {
-    case "8h30-10h30":
-      prd = "P1";
-      break;
-    case "10h30-12h30":
-      prd = "P2";
-      break;
-    case "14h-16h":
-      prd = "P3";
-      break;
-    case "16h-18h":
-      prd = "P4";
-      break;
-    default:
-      break;
-  }
-  return prd;
-}
-changeDay(day:string){
-  let prd = "";
-  switch (day) {
-    case "Lundi":
-      prd = "Monday";
-      break;
-    case "Mardi":
-      prd = "Tuesday";
-      break;
-    case "Mercredi":
-      prd = "Wednesday";
-      break;
-    case "Jeudi":
-      prd = "Thursday";
-      break;
-    case "Vendredi":
-      prd = "Friday";
-      break;
-    default:
-      break;
-}
-return prd;
-}
-
-getModuleTitle(days: string, timeSlot: string): string {
-
-  let day = this.changeDay(days).toUpperCase();
-  let prd= this.getPeriode(timeSlot );
-  const module = this.elementDeModule.find(module => module.jour === day && module.periode === prd);
-  return module ? module.libelle : '';
-}
-
-getModuleRoom(days: string, timeSlot: string): string {
-  let day = this.changeDay(days).toUpperCase();
-  let prd= this.getPeriode(timeSlot );
-  const module = this.elementDeModule.find(module => module.jour === day && module.periode === prd);
-  return module ? module.salle.typeSalle+" "+module.salle.numSalle : '';
-}
-
-getModuleTeacher(days: string, timeSlot: string): string {
- let day = this.changeDay(days).toUpperCase();
-  let prd= this.getPeriode(timeSlot );
-  const module = this.elementDeModule.find(module => module.jour === day && module.periode === prd);
-  if(!this.prof)
-  {
-  return module ? module.enseignant.civilite+". "+module.enseignant.prenom+" "+module.enseignant.nom : '';
-
-}else{
-return module ? module.module.classe.libelle : '';
-}
-}
-  handleDownloadEmploi(){
-     
-    Swal.fire({
-      title: 'Voulez-vous vraiment Exporter les données ?',
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-
-      confirmButtonText: 'Oui, exporter !',
-      cancelButtonText: 'Annuler'
-    }).then((result) => {
-      if (result.isConfirmed) {
-         this.spinnerExport=true;
-        if(this.prof)
-      {
-         this.actons.exportFileProf(parseFloat(this.cookieService.get("userId"))).subscribe(
-          data=>{
-            this.spinnerExport=false;
-            console.log(data)
-            // if done, then show a success message
-            downloadFile(data, "application/pdf");
-          },
-          error=>{
-            this.spinnerExport=false;
-            console.log(error)
-            // if done, then show a success message
-        Swal.fire(
-          'Erreur !',
-          'Une erreur est survenue lors de l\'exportation.',
-          'error'
-        )
-          }
-        )
-      }
-      else{
-        this.actons.exportFileClasse(this.selectedFiliere!.id).subscribe(
-          data=>{
-            this.spinnerExport=false;
-            console.log(data)
-            // if done, then show a success message
-            downloadFile(data, "application/pdf");
-          },
-          error=>{
-            this.spinnerExport=false;
-            console.log(error)
-            // if done, then show a success message
-        Swal.fire(
-          'Erreur !',
-          'Une erreur est survenue lors de l\'exportation.',
-          'error'
-        )
-          }
-        )
-      }
-       
-
-       
-
-
-        // show a loading spinner
-        
-        
-
-        
-      }
-    }
-    )
-    
-  }
-  getDepartements(){
-    this.departmentService
-      .searchDepartments("", 0,20)
-      .subscribe(
-        (data) => {
-          this.departements = data.content;
-        }
-      );
-  }
-handleDepartmentChange(target: EventTarget | null) {
-  if (target instanceof HTMLSelectElement) {
-    const departmentId = parseFloat(target.value);
-    
-    console.log("departmentId");
-    
-    console.log(departmentId);
-    
-    this.selectedDepartement = this.departements.find(
-      (department) => department.id === departmentId
-    );
-
-    // Call the getFilieres method to update the filieres based on the selected department
-    this.getFilieres();
-  }
-}
-
-handleFiliereChange(target: EventTarget | null) {
-  if (target instanceof HTMLSelectElement) {
-    const filiereId = parseFloat(target.value);
-    
-    
-    this.selectedFiliere = this.filieres.find(
-      (f) => f.id === filiereId
-    );
-
-    // Call the getFilieres method to update the filieres based on the selected department
-    this.getSemsters();
-  }
-}
-handleSemsterChange(target: EventTarget | null) {
-  if (target instanceof HTMLSelectElement) {
-    const semsterId = parseFloat(target.value);
-    
-    
-    this.selectedSemster = this.semsters.find(
-      (s) => s.id === semsterId
-    );
-
-    this.ready = true;
-    this.getEmplois(semsterId, this.selectedFiliere!.id, this.selectedDepartement!.id);
-  }
-}
-
-  getEmplois(semsterId: number, idFiliere: number , idDepartement: number ) {
- 
-    this.classeService.searchClassesSem(this.selectedFiliere!.libelle,semsterId,0,1).subscribe(
-      (data) => {
-        let classeId =1;
-        this.classe = data.content[0];
-    
-        classeId = this.classe.id;
-     
-    
-  this.emploiService.getEmploisByClasse(classeId).subscribe(
-          data=>{
-            this.elementDeModule = data;
-            console.log(data);
-          }
-        )
-      }
-    );
-   
+  
+  // Vérifier si un jour contient des modules
+  hasModulesForDay(jour: string): boolean {
+    return this.emploi.some(item => item.jour === jour);
   }
 
-
-  getFilieres(){
-    if(this.selectedDepartement)
-    this.departmentService.getFilieres(this.selectedDepartement.id).subscribe(
-      (data) => {
-        this.filieres = data;
-      }
-    );
-
-    
-    
-  }
-  getSemsters(){
-    if(this.selectedFiliere)
-    this.filiereService.getSemsterByFiliere(this.selectedFiliere.id).subscribe(
-      (data) => {
-        this.semsters = data;
-      }
-    );
-
-    
-    
+  // Convertir le jour en français
+  getFrenchDay(jour: string): string {
+    return this.daysTranslation[jour] || jour;
   }
 
-
+  // Vérifier si un jour et une période ont des modules
+  hasModuleForDayAndPeriode(jour: string, periode: string): boolean {
+    return this.emploi.some(item => item.jour === jour && item.periode === periode);
+  }
+  downloadPDF(): void {
+    const doc = new jsPDF();
+    const margin = 10;
+    const tableWidth = 190; // Largeur totale du tableau
+    const columnWidth = tableWidth / 7; // Chaque colonne aura une largeur égale
+    let yPosition = margin + 20; // Position de départ
+  
+    // Ajouter un titre plus grand
+    doc.setFontSize(18);
+    doc.setTextColor(0, 0, 0); // Couleur du texte (noir)
+    doc.text('Emploi du Temps de l\'Enseignant', margin, yPosition);
+    yPosition += 20;
+  
+    // Définir les en-têtes du tableau
+    const headers = ['Jours', 'S1 (8:30 - 10:00)', 'S2 (10:05 - 11:35)', 'S3 (11:40 - 13:10)', 'S4 (13:15 - 14:45)', 'S5 (14:50 - 16:20)', 'S6 (16:25 - 17:55)'];
+  
+    // Style des en-têtes
+    doc.setFontSize(12);
+    doc.setTextColor(255, 255, 255); // Couleur du texte des en-têtes (blanc)
+    doc.setFillColor(0, 123, 255); // Couleur de fond des en-têtes (bleu)
+    
+    // Dessiner l'en-tête avec un fond coloré
+    doc.rect(margin, yPosition, tableWidth, 10, 'F'); // Fond bleu
+    headers.forEach((header, index) => {
+      doc.text(header, margin + (index * columnWidth) + columnWidth / 2, yPosition + 6, { align: 'center' });
+    });
+  
+    yPosition += 10;
+  
+    // Dessiner les lignes de données avec un fond alterné pour la lisibilité
+    let alternateColor = false;
+    this.jours.forEach(jour => {
+      const rowColor = alternateColor ? [240, 240, 240] : [255, 255, 255]; // Fond alterné
+  
+      // Dessiner une ligne de fond pour chaque jour
+      doc.setFillColor(rowColor[0], rowColor[1], rowColor[2]); // Utilisation directe des valeurs du tableau
+      doc.rect(margin, yPosition, tableWidth, 10, 'F');
+      doc.setTextColor(0, 0, 0); // Couleur du texte (noir)
+  
+      // Ajouter le jour à la première colonne
+      doc.text(jour, margin + 5, yPosition + 6);
+  
+      // Ajouter les périodes (colonnes)
+      this.periodes.forEach((periode, index) => {
+        const item = this.emploi.find(item => item.jour === jour && item.periode === periode);
+        const moduleText = item ? `${item.libelle} - Salle: ${item.salle?.numSalle}` : '';
+        doc.text(moduleText, margin + (index + 1) * columnWidth + columnWidth / 2, yPosition + 6, { align: 'center' });
+      });
+  
+      yPosition += 10;
+      alternateColor = !alternateColor; // Alterner la couleur de fond
+    });
+  
+    // Ajouter une bordure autour du tableau
+    doc.setDrawColor(0, 0, 0); // Couleur de la bordure (noir)
+    doc.rect(margin, margin + 10, tableWidth, yPosition - margin - 10); // Bordure
+  
+    // Télécharger le PDF
+    doc.save('emploi_du_temps.pdf');
+  }
+  
 }
- function downloadFile(data: Blob, arg1: string) {
-  const blob = new Blob([data], { type: arg1 });
-  const url = window.URL.createObjectURL(blob);
-  window.open(url);
-}
-
-

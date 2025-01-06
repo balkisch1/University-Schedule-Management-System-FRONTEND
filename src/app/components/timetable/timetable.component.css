@@ -1,131 +1,131 @@
-.schedule-table table thead tr {
-  background: #0e4d85;
+/* Conteneur principal de l'emploi du temps */
+.timetable-container {
+  background-color: #f4f8fb;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 40px;
 }
 
-.schedule-table table thead th {
-  padding: 6px 12px;
-  font-size: 14px;
-  color: #fff;
+h2 {
   text-align: center;
-  font-weight: 800;
-  position: relative;
-  border: 0;
-}
-
-.schedule-table table thead th:before {
-  content: "";
-  width: 3px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.2);
-  position: absolute;
-  right: -1px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.schedule-table table tbody td {
-  vertical-align: middle;
-  border: 1px solid #e2edf8;
-  font-weight: 500;
-  padding: 10px;
-  text-align: center;
-}
-
-.schedule-table table tbody td.day {
-  font-size: 18px;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 30px;
   font-weight: 600;
-  background: #f0f1f3;
-  border: 1px solid #e4e4e4;
-  position: relative;
-  transition: all 0.3s linear 0s;
-  min-width: 135px;
 }
 
-.schedule-table table tbody td.active {
-  position: relative;
-  z-index: 10;
-  transition: all 0.3s linear 0s;
-  min-width: 135px;
+.timetable {
+  width: 100%;
+  overflow-x: auto;
 }
 
-.schedule-table table tbody td.active h4 {
-  font-weight: 700;
-  color: #000;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+th {
+  padding: 12px;
   font-size: 16px;
+  text-transform: uppercase;
+}
+
+tbody tr {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+td {
+  padding: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+td .module {
+  font-weight: bold;
+  color: #2d6bf9;
   margin-bottom: 5px;
 }
 
-.schedule-table table tbody td.active p {
-  font-size: 14px;
-  line-height: normal;
-  margin-bottom: 0;
+td .room {
+  font-size: 12px;
+  color: #777;
 }
 
-.schedule-table table tbody td.active::before {
-  position: absolute;
-  content: "";
-  min-width: 50%;
-  min-height: 50%;
-  transform: scale(0);
-  top: 0;
-  left: 0;
-  z-index: -1;
-  border-radius: 0.25rem;
-  transition: all 0.3s linear 0s;
+td .room-capacity {
+  font-size: 12px;
+  color: #999;
 }
 
-@media screen and (max-width: 619px) {
-  .schedule-table table thead th {
-    padding: 12px;
-  }
-  .schedule-table table tbody td {
-    padding: 10px;
-  }
-  .schedule-table table tbody td.active h4 {
-    font-size: 14px;
-  }
-  .schedule-table table tbody td.active p {
-    font-size: 12px;
-  }
-  .schedule-table table tbody td.day {
-    font-size: 14px;
-  }
+td:first-child {
+  font-weight: bold;
+  background-color: #f1f5fb;
+  color: #333;
+  padding-left: 20px;
+  text-align: left;
 }
 
-@media screen and (max-width: 991px) {
-  .schedule-table table thead th {
-    font-size: 14px;
-    padding: 12px;
-  }
-  .schedule-table table tbody td.day {
-    font-size: 14px;
-  }
-  .schedule-table table tbody td.active h4 {
-    font-size: 13px;
-  }
+td:last-child {
+  border-radius: 0 8px 8px 0;
 }
 
-@media screen and (max-width: 767px) {
-  .schedule-table table thead th {
-    padding: 10px;
-  }
-  .schedule-table table tbody td {
-    padding: 10px;
-  }
-  .schedule-table table tbody td.active h4 {
-    font-size: 12px;
-  }
-  .schedule-table table tbody td.active p {
-    font-size: 12px;
-  }
-  .schedule-table table tbody td.day {
-    font-size: 14px;
-  }
+/* Lien et actions */
+a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-@media screen and (max-width: 575px) {
-  .schedule-table table tbody td.day {
-    min-width: 100px;
-  }
+a:hover {
+  text-decoration: underline;
 }
 
+/* Message no data */
+.text-center {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.mt-4 {
+  margin-top: 30px;
+}
+
+/* Charger le contenu */
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+  margin-top: 40px;
+}
+.timetable-container {
+  margin: 20px;
+}
+
+.btn {
+  background-color: #ff9204;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

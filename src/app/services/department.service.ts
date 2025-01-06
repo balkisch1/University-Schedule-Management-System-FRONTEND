@@ -37,6 +37,6 @@ export class DepartmentService {
   }
 
   public getFilieres(id: number): Observable<Filiere[]> {
-    return this.http.get<Filiere[]>(`${environment.backendHost}/departements/${id}/filieres`);
+    return this.http.get<Filiere[]>(`${environment.backendHost}/departements/${id}/fillieres  `);
   }
 }

@@ -13,28 +13,28 @@ export class FiliereService {
 
    constructor(private http:HttpClient) { }
   public getAllFilieres(): Observable<Filiere[]> {
-    return this.http.get<Filiere[]>(`${environment.backendHost}/filieres/all`);
+    return this.http.get<Filiere[]>(`${environment.backendHost}/fillieres/all`);
   }
    public getFilieres(page: number, size: number): Observable<PageFiliere> {
-    return this.http.get<PageFiliere>(environment.backendHost + "/filieres?page=" + page + "&size=" + size);
+    return this.http.get<PageFiliere>(environment.backendHost + "/fillieres?page=" + page + "&size=" + size);
   }
   public searchFilieres(keyword : string,page: number, size: number):Observable<PageFiliere>{
-    return this.http.get<PageFiliere>(environment.backendHost+"/filieres/search?keyword="+keyword+"&page=" + page + "&size=" + size)
+    return this.http.get<PageFiliere>(environment.backendHost+"/fillieres/search?keyword="+keyword+"&page=" + page + "&size=" + size)
   }
   public saveFiliere(Filiere: Filiere):Observable<Filiere>{
-    return this.http.post<Filiere>(environment.backendHost+"/filieres",Filiere);
+    return this.http.post<Filiere>(environment.backendHost+"/fillieres",Filiere);
   }
   public updateFiliere(id: number,Filiere: Filiere):Observable<Filiere>{
      console.log("Update f");
-    return this.http.put<Filiere>(environment.backendHost+"/filieres/"+id,Filiere);
+    return this.http.put<Filiere>(environment.backendHost+"/fillieres/"+id,Filiere);
   }
   public getFiliere(id: number):Observable<Filiere>{
-    return this.http.get<Filiere>(environment.backendHost+"/filieres/"+id);
+    return this.http.get<Filiere>(environment.backendHost+"/fillieres/"+id);
   }
   public deleteFiliere(id: number): Observable<any>{
-    return this.http.delete(environment.backendHost+"/filieres/"+id);
+    return this.http.delete(environment.backendHost+"/fillieres/"+id);
   }
   public getSemsterByFiliere(id: number):Observable<any>{
-    return this.http.get(environment.backendHost+"/filieres/"+id+"/semesters");
+    return this.http.get(environment.backendHost+"/fillieres/"+id+"/semesters");
   }
 }
