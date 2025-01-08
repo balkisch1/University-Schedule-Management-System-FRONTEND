@@ -74,7 +74,7 @@ For any inquiries, please contact [balkischachia12@gmail.com]
 ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150043.png?raw=true)
 ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150048.png?raw=true)
 
-Student Timetable: View and Download as PDF
+## Student Timetable: View and Download as PDF
 
 ![image](https://github.com/user-attachments/assets/11488232-d97d-4a5d-b89f-31336c9931e8)
 
