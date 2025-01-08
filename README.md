@@ -36,8 +36,6 @@ For any inquiries, please contact [balkischachia12@gmail.com]
   ## Professor Dashboard - Profile & Password Update
   ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143552.png?raw=true)
 
-
-## Password Update
    ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143600.png?raw=true)
 
 
@@ -71,3 +69,7 @@ For any inquiries, please contact [balkischachia12@gmail.com]
 ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150030.png?raw=true)
 
 
+
+## Class Management Interface: Add, Edit, Search and   Delete Records
+![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150043.png?raw=true)
+![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150048.png?raw=true)
