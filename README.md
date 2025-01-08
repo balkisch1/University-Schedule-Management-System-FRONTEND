@@ -45,3 +45,23 @@ For any inquiries, please contact [balkischachia12@gmail.com]
    ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143605.png?raw=true)
   ## Professor Unavailability Management 
   ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143610.png?raw=true)
+
+
+
+
+
+
+
+
+
+
+
+  ## Home Page  For Admin
+  🔧 Key Features:
+
+Class & Department Overview: Quickly view the total number of classes, departments, and professors in the system.
+Manage Schedules: Generate and export timetables as PDFs to ensure seamless scheduling for students and professors.
+Import Data: Easily import data from CSV files to update or add information related to departments, classes, and schedules.
+Export Timetables: After creating or updating schedules, export them as PDF documents for easy sharing and printing.
+ ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150020.png?raw=true)
+
