@@ -31,3 +31,4 @@ For any inquiries, please contact [balkischachia12@gmail.com]
 ## ScreenShots
 ## Home Page and login
  ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143529.png?raw=true)
+  ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143535.png?raw=true)
