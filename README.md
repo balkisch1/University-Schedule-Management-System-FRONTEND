@@ -32,8 +32,7 @@ For any inquiries, please contact [balkischachia12@gmail.com]
 ## Home Page and login
  ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143529.png?raw=true)
   ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143535.png?raw=true)
-  ## Professor Unavailability Management 
-  ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143610.png?raw=true)
+
   ## Professor Dashboard - Profile & Password Update
   ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143552.png?raw=true)
 
@@ -41,5 +40,8 @@ For any inquiries, please contact [balkischachia12@gmail.com]
 ## Password Update
    ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143600.png?raw=true)
 
+
 ## TimeTable 
    ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143605.png?raw=true)
+  ## Professor Unavailability Management 
+  ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20143610.png?raw=true)
