@@ -38,6 +38,10 @@ import { NonDisponibleComponent } from './components/gestion/non-disponible/non-
 import { AboutComponent } from './components/about/about.component';
 import { UserComponent } from './components/user/user.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginetudiantComponent } from './loginetudiant/loginetudiant.component';
+import { GestionEtudiantComponent } from './components/gestion/gestion-etudiant/gestion-etudiant.component';
+import { AddNewEtudiantComponent } from './components/add/add-new-etudiant/add-new-etudiant.component';
+import { EditEtudiantComponent } from './components/edit/edit-etudiant/edit-etudiant.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +78,11 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     NonDisponibleComponent,
     AboutComponent,
     UserComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    LoginetudiantComponent,
+    GestionEtudiantComponent,
+    AddNewEtudiantComponent,
+    EditEtudiantComponent
   ],
   imports: [
     BrowserModule,

@@ -4,26 +4,28 @@
   [current]="'Home'"
 ></app-page-header>
 <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchClasses()">
-<div class="student-group-form">
-  <div class="row">
-    <div class="col-lg-3 col-md-6">
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Recherche par libellé ..."
-        />
+  <div class="student-group-form">
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Recherche par libellé ..."
+            formControlName="keyword" 
+          />
+        </div>
       </div>
-    </div>
 
-    <div class="col-lg-2">
-      <div class="search-student-btn">
-        <button type="button" class="btn btn-primary">Chercher</button>
+      <div class="col-lg-2">
+        <div class="search-student-btn">
+          <button type="submit" class="btn btn-primary">Chercher</button> <!-- Change 'type' à 'submit' pour déclencher la soumission -->
+        </div>
       </div>
     </div>
   </div>
-</div>
 </form>
+
 
 <div class="row">
   <div class="col-sm-12">

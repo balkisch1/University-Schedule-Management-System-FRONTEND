@@ -1,5 +1,6 @@
 import { Classe } from "./classes.models";
 import { Departement } from "./departement.models";
+import { Etudiant } from "./etudiant.model";
 import { Filiere } from "./filieres.models";
 import { Prof } from "./prof.models";
 import { Salle } from "./salles.models";
@@ -46,4 +47,16 @@ export interface PageClasse {
     number:           number;
     numberOfElements: number;
     }
+
+
+
+
+    export interface PageEtudiant {
+      content:          Etudiant[];
+      totalPages:       number;
+      totalElements:    number;
+      size:             number;
+      number:           number;
+      numberOfElements: number;
+      }
     

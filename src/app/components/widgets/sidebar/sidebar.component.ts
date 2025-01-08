@@ -17,8 +17,8 @@ export class SidebarComponent implements OnInit{
     icon: "fas fa-home"
   },
   {
-    link: "/emploitemps",
-    title: "Emploi du temps",
+    link: "/gestetud",
+    title: "Etudiants",
     icon: "fas fa-clipboard-list"
   },
   {
@@ -63,23 +63,46 @@ sidebarProfItems = [
     link: "/nonDesponibles",
     title: "Non Disponibilités",
     icon: "fas fa-clipboard-list"
-  },
-
+  }, 
 ]
+
+
+
+sidebarEtudiantItems = [
+  
+  {
+    link: "/user",
+    title: "Emploi du temps",
+    icon: "fas fa-clipboard-list"
+  },
+  
+
+
+
+
+
+  
+]
+
+
   constructor(private cookieService: CookieService) { }
 
   handleChangeBars(index: number): void {
   this.active = index;
 }
-  ngOnInit(): void {
-
-    if(this.cookieService.get('role') == "Administrateur"){
-     this.sidebarItems= this.sidebarAdminItems;
-    }else {
-     this.sidebarItems= this.sidebarProfItems;
-    }
-
+ngOnInit(): void {
+  const userRole = this.cookieService.get('role');
+  console.log("Rôle de l'utilisateur:", userRole);  // Affiche le rôle dans la console
+  
+  if (userRole === "Administrateur") {
+    this.sidebarItems = this.sidebarAdminItems;
+  } else if (userRole === "Enseignant") {
+    this.sidebarItems = this.sidebarProfItems;
+  } else {
+    this.sidebarItems = this.sidebarEtudiantItems;
+  } 
 }
+
 isSidebarHidden: boolean = false;
 
 toggleSidebar() {

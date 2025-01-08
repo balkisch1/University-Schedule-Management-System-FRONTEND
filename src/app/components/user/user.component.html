@@ -1,1 +1,45 @@
-<p>user works!</p>
+<div *ngIf="!loading && emploi.length > 0" class="timetable-container">
+  <h2>Emploi du Temps de l'Etudiant </h2>
+  <button (click)="downloadPDF()" class="btn btn-primary mb-3">Télécharger en PDF</button>
+  <div class="timetable">
+    <!-- Tableau de l'emploi du temps -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Jours</th>
+          <th>S1 (8:30 - 10:00)</th>
+          <th>S2 (10:05 - 11:35)</th>
+          <th>S3 (11:40 - 13:10)</th>
+          <th>S4 (13:15 - 14:45)</th>
+          <th>S5 (14:50 - 16:20)</th>
+          <th>S6 (16:25 - 17:55)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Parcours des jours de la semaine -->
+        <tr *ngFor="let jour of jours">
+          <td>{{ jour }}</td>
+
+          <!-- Parcours des périodes pour chaque jour -->
+          <td *ngFor="let periode of periodes">
+            <ng-container *ngIf="hasModuleForDayAndPeriode(jour, periode)">
+              <div *ngFor="let item of emploi">
+                <!-- Afficher uniquement les éléments qui correspondent au jour et à la période -->
+                <div *ngIf="item.jour === jour && item.periode === periode">
+                  <p class="module">{{ item.libelle }}</p>
+                  <p class="room">Salle : {{ item.salle?.numSalle }} ({{ item.salle?.typeSalle }})</p>
+                  <p class="room-capacity">Capacité : {{ item.salle?.capacite }}</p>
+                </div>
+              </div>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Message si aucun emploi du temps n'est trouvé -->
+<div *ngIf="!loading && emploi.length === 0" class="text-center mt-4">
+  <p>Aucun emploi du temps trouvé pour cet enseignant.</p>
+</div>

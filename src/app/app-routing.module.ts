@@ -27,17 +27,31 @@ import { AboutComponent } from './components/about/about.component';
 import { UserComponent } from './components/user/user.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginComponent } from './components/widgets/login/login.component';
+import { LoginetudiantComponent } from './loginetudiant/loginetudiant.component';
+import { GestionEtudiantComponent } from './components/gestion/gestion-etudiant/gestion-etudiant.component';
+import { AddNewEtudiantComponent } from './components/add/add-new-etudiant/add-new-etudiant.component';
+import { EditEtudiantComponent } from './components/edit/edit-etudiant/edit-etudiant.component';
 const routes: Routes = [
   { path :'' , component: HomeComponent},
   { path: 'dashboard', component: AppComponent }, 
   { path :'index' , component: IndexPageComponent},
    // Page du formulaire
    { path: 'login', component: LoginComponent },
+   { path: 'loginetudiant', component: LoginetudiantComponent },
    { path: 'register', component: RegisterFormComponent }, // Ajoutez cette ligne
    { path: '', redirectTo: '/login', pathMatch: 'full' },
+   { path: '', redirectTo: '/loginetudiant', pathMatch: 'full' },
     { path :'home' , component: HomeComponent},
     { path :'profs' , component: GestionProfComponent},
     { path :'profs/add' , component: AddNewProfComponent},
+
+    { path :'gestetud' , component: GestionEtudiantComponent},
+    { path :'etudiants/add' , component:AddNewEtudiantComponent },
+    { path :'etudiants/edit' , component:EditEtudiantComponent },
+
+
+
+
     { path :'filieres' , component: GestionFiliereComponent},
     { path :'filieres/add' , component: AddNewFiliereComponent},
     { path :'departements' , component: GestionDepartmentComponent},

@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-body">
+          <form [formGroup]="editEtudiantFormGroup" (submit)="handleUpdateEtudiant()">
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title student-info">
+                  Informations sur l'Étudiant<span><a href="javascript:;"><i class="feather-more-vertical"></i></a></span>
+                </h5>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Prénom <span class="login-danger">*</span></label>
+                  <input class="form-control" type="text" formControlName="prenom" />
+                </div>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Nom <span class="login-danger">*</span></label>
+                  <input class="form-control" type="text" formControlName="nom" />
+                </div>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Téléphone</label>
+                  <input class="form-control" type="text" formControlName="tel" />
+                </div>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>CNE <span class="login-danger">*</span></label>
+                  <input class="form-control" type="text" formControlName="cne" />
+                </div>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Nom d'utilisateur <span class="login-danger">*</span></label>
+                  <input class="form-control" type="text" formControlName="login" />
+                </div>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Mot de passe <span class="login-danger">*</span></label>
+                  <input class="form-control" type="password" formControlName="password" />
+                </div>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Rôle</label>
+                  <input class="form-control" type="text" formControlName="role" />
+                </div>
+              </div>
+  
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Classe</label>
+                  <input class="form-control" type="text" formControlName="classe" />
+                </div>
+              </div>
+  
+              <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="student-submit">
+                  <button type="submit" class="btn btn-primary">Confirmer</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

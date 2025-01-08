@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.formGroup.invalid) {
-      // Mark form controls as touched to display validation errors
+     
       this.formGroup.markAllAsTouched();
       return;
     }
@@ -55,9 +55,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(username, password).subscribe(response => {
       localStorage.setItem('currentUser', JSON.stringify(response));
       if (response.success) {
-        console.log('Login successful:', response);
+        console.log('Connexion réussie:', response);
   
-        // Assign response data to authService properties
+       
         this.authService.loggedIn = response.success;
         this.authService.isAdmin = response.admin;
         this.authService.isProf = response.prof;
@@ -65,22 +65,27 @@ export class LoginComponent implements OnInit {
         this.authService.token = response.token;
         this.authService.id = response.id;
   
-        // Store data in cookies
         this.cookieService.set('username', this.authService.name);
         this.cookieService.set('userId', this.authService.id.toString());
+  
         const role = response.admin ? 'Administrateur' : response.prof ? 'Enseignant' : 'Utilisateur';
         this.cookieService.set('role', role);
+        localStorage.setItem('role', role);
   
-        // Navigate to home page after successful login
-        this.router.navigateByUrl('/home');
+        
+        this.router.navigateByUrl('/home').then(() => {
+          window.location.reload(); 
+        });
+        
       } else {
-        Swal.fire('Echec', 'Nom d\'utilisateur ou mot de passe incorrect', 'error');
+        Swal.fire('Échec', 'Nom d\'utilisateur ou mot de passe incorrect', 'error');
       }
     }, error => {
-      console.error('Login error:', error);
-      Swal.fire('Echec', 'Erreur lors de la connexion. Veuillez réessayer.', 'error');
+      console.error('Erreur de connexion:', error);
+      Swal.fire('Échec', 'Erreur lors de la connexion. Veuillez réessayer.', 'error');
     });
   }
+  
 
   loginWithGoogle() {
     const auth = getAuth();

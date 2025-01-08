@@ -11,6 +11,7 @@ export class AuthService {
   private user: any = null; 
   public loggedIn: boolean = false;
   public isAdmin: boolean = false;
+  public isEtudiant: boolean = false;
   public isProf: boolean = false;
   public name: string = "";
   public token: string = "";
@@ -33,6 +34,7 @@ export class AuthService {
         })
       );
   }
+  
   
   
   // Récupérer l'ID de l'enseignant depuis localStorage

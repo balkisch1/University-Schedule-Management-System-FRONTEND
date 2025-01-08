@@ -10,11 +10,11 @@
           <div class="login-right-wrap">
             <h1>Bienvenue à Timely</h1>
             <p class="account-subtitle">
-              Accédez à votre compte pour consulter les emplois du temps.
+              Accédez à votre compte pour consulter les emplois du temps.aaaaaaaaaaaaaaaaaaaaaaaaa
             </p>
             <h2>Connexion</h2>
 
-            <form [formGroup]="formGroup" (ngSubmit)="login()">
+            <form [formGroup]="formGroup" (ngSubmit)="loginf()">
               <div class="form-group">
                 <label>Nom d'utilisateur <span class="login-danger">*</span></label>
                 <input type="text" class="form-control" formControlName="username"   placeholder="username" />
@@ -38,18 +38,14 @@
               </div>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block" [disabled]="formGroup.invalid" (click)="login()">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="formGroup.invalid">
                   Connexion
                 </button>
               </div>
               
               
             </form>
-            <div class="form-group">
-              <button class="btn btn-google btn-block" (click)="loginWithGoogle()">
-                <i class="fab fa-google"></i> Se connecter avec Google
-              </button>
-            </div>
+          
           </div>
         </div>
       </div>

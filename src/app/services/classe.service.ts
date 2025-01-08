@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,9 +18,19 @@ export class ClasseService {
   public searchClassesSem(keyword : string, sem:number,page: number, size: number):Observable<PageClasse>{
     return this.http.get<PageClasse>(environment.backendHost+"/classes/searchSem?keyword="+keyword+"&page=" + page + "&size=" + size+"&sem="+sem)
   }
-  public searchClasses(keyword : string, page: number, size: number):Observable<PageClasse>{
-    return this.http.get<PageClasse>(environment.backendHost+"/classes/search?keyword="+keyword+"&page=" + page + "&size=" + size)
+
+  public searchClasses(keyword: string, page: number, size: number): Observable<PageClasse> {
+    // Créer les paramètres de la requête
+    const params = new HttpParams()
+      .set('keyword', keyword)
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    // Envoie la requête GET avec les paramètres dans l'URL
+    return this.http.get<PageClasse>(`${environment.backendHost}/classes/search`, { params });
   }
+
+  
   public saveClasse(Classe: Classe):Observable<Classe>{
     return this.http.post<Classe>(environment.backendHost+"/classes",Classe);
   }

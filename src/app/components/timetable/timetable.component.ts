@@ -29,24 +29,33 @@ export class TimetableComponent implements OnInit {
       private authService: AuthService,
   ) {}
 
-  ngOnInit(): void {
-    const userId = this.authService.getCurrentUserId();
-    if (userId === 0) {
-      console.warn('Utilisateur non connecté ou ID non valide.');
-      return;
-    }
-  
-    // Si l'utilisateur est bien connecté, on récupère son emploi du temps
-    this.http.get<any[]>(`${environment.backendHost}/emploisDeTemps/prof/${userId}`)
-      .subscribe(data => {
-        console.log('Données récupérées: ', data);
-        this.emploi = data;
-        this.loading = false;
-      }, error => {
-        console.error('Erreur lors de la récupération des données', error);
-        this.loading = false;
-      });
+ngOnInit(): void {
+  const userId = this.authService.getCurrentUserId();
+  console.log('ID Utilisateur récupéré au démarrageaaaa :', userId); // Nouveau console.log ajouté ici
+
+  if (!userId || userId === 0) {
+    console.warn('Utilisateur non connecté ou ID non valide.');
+    this.loading = false;
+    return;
   }
+
+  this.fetchTimetable(userId);
+}
+
+fetchTimetable(userId: number): void {
+  console.log('ID Utilisateur envoyé à fetchTimetable :', userId); // Vérifie que l'ID est bien passé à la méthode
+
+  this.http.get<any[]>(`${environment.backendHost}/emploisDeTemps/prof/${userId}`)
+    .subscribe(data => {
+      console.log('Données récupérées :', data);
+      this.emploi = data;
+      this.loading = false;
+    }, error => {
+      console.error('Erreur lors de la récupération des données', error);
+      this.loading = false;
+    });
+}
+
   
   // Vérifier si un jour contient des modules
   hasModulesForDay(jour: string): boolean {
