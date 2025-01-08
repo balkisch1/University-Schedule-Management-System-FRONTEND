@@ -66,3 +66,8 @@ For any inquiries, please contact [balkischachia12@gmail.com]
 ![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150020.png?raw=true)
 
 
+## Student Management Interface: Add, Edit, and Delete Records
+![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150025.png?raw=true)
+![Homepage](https://github.com/balkisch1/University-Schedule-Management-System-FRONTEND/blob/main/Capture%20d'%C3%A9cran%202025-01-08%20150030.png?raw=true)
+
+
